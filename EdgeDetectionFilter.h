@@ -6,15 +6,16 @@
 #define CPP_HSE_EDGEDETECTIONFILTER_H
 
 #include "CompositeFilter.h"
-#include "ConvolutionFilter.h"
-#include "ThresholdFilter.h"
-#include "GrayScaleFilter.h"
 
-class EdgeDetectionFilter : public CompositeFilter {
+namespace image_processor {
+
+class EdgeDetectionFilter final : public CompositeFilter {
 public:
     explicit EdgeDetectionFilter(const double threshold);
 
     ~EdgeDetectionFilter() override = default;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_EDGEDETECTIONFILTER_H

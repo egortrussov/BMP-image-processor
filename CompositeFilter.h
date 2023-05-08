@@ -6,14 +6,15 @@
 #define CPP_HSE_COMPOSITEFILTER_H
 
 #include "Filter.h"
+
 #include <memory>
 
-namespace {
-using FiltersList = std::vector<std::unique_ptr<Filter>>;
-}
+namespace image_processor {
 
 class CompositeFilter : public Filter {
 public:
+    using FiltersList = std::vector<std::unique_ptr<image_processor::Filter>>;
+
     explicit CompositeFilter(FiltersList filters);
 
     void ApplyFilter(Image& image) const override;
@@ -26,5 +27,7 @@ protected:
 private:
     FiltersList filters_;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_COMPOSITEFILTER_H

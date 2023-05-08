@@ -4,6 +4,8 @@
 
 #include "ThresholdFilter.h"
 
+namespace image_processor {
+
 ThresholdFilter::ThresholdFilter(const double threshold) : threshold_(threshold) {
 }
 
@@ -14,3 +16,5 @@ void ThresholdFilter::FilterImplementation(Image::Channel &channel) const {
         }
     }
 }
+
+}  // namespace image_processor

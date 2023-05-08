@@ -4,6 +4,8 @@
 
 #include "NegativeFilter.h"
 
+namespace image_processor {
+
 void NegativeFilter::FilterImplementation(Image::Channel &channel) const {
     for (size_t y = 0; y < channel.size(); ++y) {
         for (size_t x = 0; x < channel[y].size(); ++x) {
@@ -11,3 +13,5 @@ void NegativeFilter::FilterImplementation(Image::Channel &channel) const {
         }
     }
 }
+
+}  // namespace image_processor

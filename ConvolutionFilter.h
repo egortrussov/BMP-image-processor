@@ -5,23 +5,29 @@
 #ifndef CPP_HSE_CONVOLUTIONFILTER_H
 #define CPP_HSE_CONVOLUTIONFILTER_H
 
+#include "ChannelWiseFilter.h"
+
 #include <vector>
-#include "Filter.h"
 
 namespace {
 using FilterMatrix = std::vector<std::vector<double>>;
 }
 
-class ConvolutionFilter : public Filter {
-public:
-    explicit ConvolutionFilter(FilterMatrix matrix);
+namespace image_processor {
 
-    void ApplyFilter(Image& image) const override;
+class ConvolutionFilter : public ChannelWiseFilter {
+public:
+    explicit ConvolutionFilter(const FilterMatrix& matrix);
 
     ~ConvolutionFilter() override = default;
+
+protected:
+    void FilterImplementation(Image::Channel& channel) const override;
 
 private:
     FilterMatrix matrix_;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_CONVOLUTIONFILTER_H

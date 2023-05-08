@@ -4,14 +4,20 @@
 #include <string>
 
 #include "Image.h"
+#include "BMPHeader.h"
 
 #ifndef CPP_HSE_BMP_H
 #define CPP_HSE_BMP_H
 
-class BMP {
+#include <filesystem>
+
+namespace image_processor {
+
+class BMP final {
 public:
-    static Image OpenImage(const std::string_view& path);
-    static void SaveImage(Image& image, const std::string_view& path);
+    static Image OpenImage(const std::filesystem::path& path);
+    static void SaveImage(const Image& image, const std::filesystem::path& path);
 };
 
+}  // namespace image_processor
 #endif  // CPP_HSE_BMP_H

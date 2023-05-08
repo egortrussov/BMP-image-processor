@@ -5,35 +5,27 @@
 #ifndef CPP_HSE_COMMANDLINEPARSER_H
 #define CPP_HSE_COMMANDLINEPARSER_H
 
-#include <iostream>
+#include "FiltersInformation.h"
+
 #include <vector>
+#include <filesystem>
 
-struct FilterDescriptor {
-    std::string_view name;
-    std::vector<std::string_view> params;
+namespace image_processor {
 
-    explicit FilterDescriptor(const std::string_view& name);
-};
-
-namespace command_line_parser {
 class CommandLineParser {
 public:
-    void Parse(int argc, char** argv);
+    void Parse(int args_number, char** args_value);
     std::vector<FilterDescriptor> GetFiltersDescription() const;
-    std::string_view GetInputFileName() const;
-    std::string_view GetOutputFileName() const;
+    std::filesystem::path GetInputFileName() const;
+    std::filesystem::path GetOutputFileName() const;
+    bool AreArgumentsEmpty() const;
 
 private:
-    static const size_t INPUT_FILENAME_POSITION = 1;
-    static const size_t OUTPUT_FILENAME_POSITION = 2;
-    static const size_t FILTERS_ARGUMENTS_START_POSITION = 3;
-    static const size_t MIN_ARGUMENTS_NUMBER = 3;
-
-    std::string_view input_file_name_;
-    std::string_view output_file_name_;
+    std::filesystem::path input_file_name_;
+    std::filesystem::path output_file_name_;
     std::vector<FilterDescriptor> filters_description_;
 };
 
-}  // namespace command_line_parser
+}  // namespace image_processor
 
 #endif  // CPP_HSE_COMMANDLINEPARSER_H

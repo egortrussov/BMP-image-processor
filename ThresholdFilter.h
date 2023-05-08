@@ -7,7 +7,9 @@
 
 #include "ChannelWiseFilter.h"
 
-class ThresholdFilter : public ChannelWiseFilter {
+namespace image_processor {
+
+class ThresholdFilter final : public ChannelWiseFilter {
 public:
     explicit ThresholdFilter(const double threshold);
 
@@ -19,5 +21,7 @@ protected:
 private:
     double threshold_;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_THRESHOLDFILTER_H

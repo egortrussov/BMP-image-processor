@@ -7,7 +7,9 @@
 
 #include "ChannelWiseFilter.h"
 
-class GaussianBlurFilter : public ChannelWiseFilter {
+namespace image_processor {
+
+class GaussianBlurFilter final : public ChannelWiseFilter {
 public:
     explicit GaussianBlurFilter(const double sigma);
 
@@ -23,5 +25,7 @@ private:
 
     double sigma_;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_GAUSSIANBLURFILTER_H

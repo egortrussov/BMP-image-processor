@@ -7,6 +7,8 @@
 
 #include "ChannelWiseFilter.h"
 
+namespace image_processor {
+
 class NegativeFilter final : public ChannelWiseFilter {
 public:
     ~NegativeFilter() override = default;
@@ -14,5 +16,7 @@ public:
 protected:
     void FilterImplementation(Image::Channel &channel) const override;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_NEGATIVEFILTER_H

@@ -4,8 +4,6 @@
 
 #include "GrayScaleFilter.h"
 
-#include <iostream>
-
 namespace {
 double GetNewChannelValue(const double red_value, const double green_value, const double blue_value) {
     static const double RED_CHANNEL_COEF = 0.299;
@@ -16,10 +14,11 @@ double GetNewChannelValue(const double red_value, const double green_value, cons
 }
 }  // namespace
 
+namespace image_processor {
+
 void GrayScaleFilter::ApplyFilter(Image& image) const {
     std::vector<Image::Channel>& image_channels = image.GetChannels();
-    if (image_channels.size() == 2) {
-        std::cout << "Unable to apply grayscale filter\n";
+    if (image_channels.size() != 3 && image_channels.size() != 1) {
         return;
     }
     if (image_channels.size() == 3) {
@@ -34,3 +33,5 @@ void GrayScaleFilter::ApplyFilter(Image& image) const {
         image_channels.pop_back();
     }
 }
+
+}  // namespace image_processor

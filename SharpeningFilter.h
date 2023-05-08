@@ -7,10 +7,14 @@
 
 #include "ConvolutionFilter.h"
 
+namespace image_processor {
+
 class SharpeningFilter final : public ConvolutionFilter {
 public:
     SharpeningFilter();
     ~SharpeningFilter() override = default;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_SHARPENINGFILTER_H

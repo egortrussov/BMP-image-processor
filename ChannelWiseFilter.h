@@ -7,6 +7,8 @@
 
 #include "Filter.h"
 
+namespace image_processor {
+
 class ChannelWiseFilter : public Filter {
 public:
     ~ChannelWiseFilter() override = default;
@@ -16,5 +18,7 @@ public:
 protected:
     virtual void FilterImplementation(Image::Channel& channel) const = 0;
 };
+
+}  // namespace image_processor
 
 #endif  // CPP_HSE_CHANNELWISEFILTER_H
